@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
+/* Aplicar a fonte globalmente */
+body {
+  font-family: 'Fira Code', monospace; /* Define a fonte como padrão para o corpo */
+}
