@@ -3,6 +3,7 @@ import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 import Typography from "_components/Typography"; // Assuming you have a Typography component
 import Navbar from "_components/Navbar"; // Assuming you have a Navbar component
+import Button from "_components/Button";
 
 const HomePage: React.FC = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -108,19 +109,22 @@ const HomePage: React.FC = () => {
               />
             </div>
           </div>
+          <div onClick={() => scrollToSection(aboutMeRef)}>
+            <Button />
+          </div>
         </div>
       </div>
 
       <motion.div
         ref={aboutMeRef}
-        initial={{ opacity: 0, x: -100 }}
+        initial={{ opacity: 0, x: -100 }} // Inicialmente invisível e fora de posição
         animate={
           aboutMeVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
-        }
-        transition={{ duration: 0.5 }}
-        className=" text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
+        } // Animação quando visível
+        transition={{ duration: 0.5 }} // Duração da animação
+        className="text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
       >
-        <div className="flex-1 p-12 order-1 md:order-2 ">
+        <div className="flex-1 p-12 order-1 md:order-2">
           <Typography
             variant="title"
             weight="bold"
@@ -133,19 +137,19 @@ const HomePage: React.FC = () => {
             variant="body"
             weight="normal"
             align="center"
-            className="leading-8 text-sm sm:text-base md:text-lg"
+            className="leading-10 text-sm sm:text-base md:text-lg md: px-64 "
           >
-            i&apos;m 21 years old, born in{" "}
-            <strong className="cursor-default hover:text-green-500 transition-colors duration-300">
+            I'm 21 years old, born in{" "}
+            <strong className="cursor-default hover:text-green-500 transition-colors duration-300 ">
               Brazil
             </strong>
-            . Currently, I&apos;m pursuing a degree in Information Systems at
-            Montes Claros State University. I have a deep passion for web
-            development, starting in front-end, but I found my true calling in
-            back-end development. My interest in programming and development
-            began when I was a child. Throughout my life, I&apos;ve always been
-            passionate about technology and games, which has significantly
-            contributed to my growth and knowledge in programming.
+            . Currently, I'm pursuing a degree in Information Systems at Montes
+            Claros State University. I have a deep passion for web development,
+            starting in front-end, but I found my true calling in back-end
+            development. My interest in programming and development began when I
+            was a child. Throughout my life, I've always been passionate about
+            technology and games, which has significantly contributed to my
+            growth and knowledge in programming.
           </Typography>
         </div>
       </motion.div>
