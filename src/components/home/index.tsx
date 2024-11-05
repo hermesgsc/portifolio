@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Typewriter from "typewriter-effect";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import Typography from "_components/Typography";
 
 const HomePage: React.FC = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -16,6 +17,7 @@ const HomePage: React.FC = () => {
   const [skillsVisible, setSkillsVisible] = useState(false);
   const [contactVisible, setContactVisible] = useState(false);
 
+  // Função para verificar a visibilidade das seções
   const checkVisibility = () => {
     const elements = [
       { ref: aboutMeRef, setVisible: setAboutMeVisible },
@@ -30,6 +32,7 @@ const HomePage: React.FC = () => {
         const elementTop = ref.current.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
 
+        // Verifica se a seção está visível na tela
         if (elementTop <= windowHeight && elementTop >= 0) {
           setVisible(true);
         } else {
@@ -41,32 +44,64 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", checkVisibility);
-
-    checkVisibility();
+    checkVisibility(); // Chama a função ao carregar a página
 
     return () => {
       window.removeEventListener("scroll", checkVisibility);
     };
   }, []);
 
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <header className="bg-custom-grey">
+      {/* Menu de Navegação */}
       <nav className="bg-custom-grey p-4 w-full">
         <ol className="flex justify-center space-x-12 text-custom-3">
-          <li className="hover:text-custom-5 transition-colors duration-300 cursor-pointer">
-            About me
+          <li
+            className="hover:text-custom-5 transition-colors duration-300 cursor-pointer"
+            onClick={() => scrollToSection(aboutMeRef)}
+          >
+            <Typography variant="body" weight="normal" align="center">
+              About me
+            </Typography>
           </li>
-          <li className="hover:text-custom-5 transition-colors duration-300 cursor-pointer">
-            Experience
+          <li
+            className="hover:text-custom-5 transition-colors duration-300 cursor-pointer"
+            onClick={() => scrollToSection(experienceRef)}
+          >
+            <Typography variant="body" weight="normal" align="center">
+              Experience
+            </Typography>
           </li>
-          <li className="hover:text-custom-5 transition-colors duration-300 cursor-pointer">
-            Projects
+          <li
+            className="hover:text-custom-5 transition-colors duration-300 cursor-pointer"
+            onClick={() => scrollToSection(projectsRef)}
+          >
+            <Typography variant="body" weight="normal" align="center">
+              Projects
+            </Typography>
           </li>
-          <li className="hover:text-custom-5 transition-colors duration-300 cursor-pointer">
-            Skills
+          <li
+            className="hover:text-custom-5 transition-colors duration-300 cursor-pointer"
+            onClick={() => scrollToSection(skillsRef)}
+          >
+            <Typography variant="body" weight="normal" align="center">
+              Skills
+            </Typography>
           </li>
-          <li className="hover:text-custom-5 transition-colors duration-300 cursor-pointer">
-            Contact
+          <li
+            className="hover:text-custom-5 transition-colors duration-300 cursor-pointer"
+            onClick={() => scrollToSection(contactRef)}
+          >
+            <Typography variant="body" weight="normal" align="center">
+              Contact
+            </Typography>
           </li>
           <div className="flex space-x-2">
             <a
@@ -89,14 +124,22 @@ const HomePage: React.FC = () => {
         </ol>
       </nav>
 
-      <div className="flex items-center justify-center mt-40 mb-40">
+      {/* Introdução */}
+      <div className="flex items-center justify-center mt-48">
         <div className="p-12 text-center">
-          <h1 className="text-3xl font-bold text-custom-5">
-            My name is Hermes Gabriel
-          </h1>
+          <Typography
+            variant="title"
+            weight="bold"
+            align="center"
+            className="text-custom-5"
+          >
+            My name is <strong>Hermes Gabriel</strong>
+          </Typography>
           <div className="flex items-center mt-4 text-custom-5 gap-3 justify-center">
-            <p className="text-xl">And I am a </p>
-            <div className="text-white text-xl font-bold">
+            <Typography variant="subtitle" weight="normal" align="center">
+              And I am a
+            </Typography>
+            <div className="text-white text-2xl font-bold">
               <Typewriter
                 options={{
                   strings: [
@@ -113,24 +156,57 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      <motion.div
-        ref={aboutMeRef}
-        initial={{ opacity: 0, x: -100 }}
-        animate={
-          aboutMeVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
-        }
-        transition={{ duration: 0.5 }}
-        className="text-custom-3 flex justify-center flex-col items-center text-center box"
-      >
-        <h1 className="text-2xl font-bold text-custom-5">About me</h1>
-        <p className="text-xl p-12 px-64">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia fugiat
-          maxime incidunt tempore, facilis quam illo asperiores nihil quae
-          libero laborum unde vero, velit a voluptatem aspernatur earum nemo
-          exercitationem.
-        </p>
-      </motion.div>
+      {/* Seção "About Me" */}
+      <section id="about-me" ref={aboutMeRef} className="p-6 m-32">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={
+            aboutMeVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
+          }
+          transition={{ duration: 0.5 }}
+          className="text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
+        >
+          <div className="flex-1 order-2 md:order-1 flex justify-center items-center mb-8 md:mb-0">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4D03AQHAiCeAMl_VLA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1695060086524?e=1736380800&v=beta&t=i9VFNajnymZQcxUD7QjQysg_Ryc97zyuNFP_L0fwVhg"
+              alt="Profile"
+              className="w-72 h-72 rounded-full"
+            />
+          </div>
 
+          <div className="flex-1 p-12 order-1 md:order-2">
+            <Typography
+              variant="title"
+              weight="bold"
+              align="center"
+              className="text-custom-5 mb-6"
+            >
+              About me
+            </Typography>
+            <Typography
+              variant="body"
+              weight="normal"
+              align="left"
+              className="leading-8"
+            >
+              I&apos;m 21 years old, born in{" "}
+              <strong className="cursor-default hover:text-green-500 transition-colors duration-300">
+                Brazil
+              </strong>
+              . Currently, I&apos;m pursuing a degree in Information Systems at
+              Montes Claros State University. I have a deep passion for web
+              development, starting in front-end, but I found my true calling in
+              back-end development. My interest in programming and development
+              began when I was a child. Throughout my life, I&apos;ve always
+              been passionate about technology and games, which has
+              significantly contributed to my growth and knowledge in
+              programming.
+            </Typography>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Seção "Experience" */}
       <motion.div
         ref={experienceRef}
         initial={{ opacity: 0, x: -100 }}
@@ -140,14 +216,27 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-custom-3 flex justify-center flex-col items-center text-center box"
       >
-        <h1 className="text-2xl font-bold text-custom-5">Experience</h1>
-        <p className="text-xl p-12 px-64">
+        <Typography
+          variant="title"
+          weight="bold"
+          align="center"
+          className="text-custom-5"
+        >
+          Experience
+        </Typography>
+        <Typography
+          variant="body"
+          weight="normal"
+          align="center"
+          className="p-12 px-64"
+        >
           I have worked on a variety of projects, primarily focusing on
           full-stack development. My experience includes building web
           applications, working with APIs, and managing databases.
-        </p>
+        </Typography>
       </motion.div>
 
+      {/* Seção "Projects" */}
       <motion.div
         ref={projectsRef}
         initial={{ opacity: 0, x: -100 }}
@@ -157,14 +246,27 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-custom-3 flex justify-center flex-col items-center text-center box"
       >
-        <h1 className="text-2xl font-bold text-custom-5">Projects</h1>
-        <p className="text-xl p-12 px-64">
+        <Typography
+          variant="title"
+          weight="bold"
+          align="center"
+          className="text-custom-5"
+        >
+          Projects
+        </Typography>
+        <Typography
+          variant="body"
+          weight="normal"
+          align="center"
+          className="p-12 px-64"
+        >
           I have contributed to several open-source projects and have built my
           own projects. Some of these are live on GitHub, and others are
           available for demo upon request.
-        </p>
+        </Typography>
       </motion.div>
 
+      {/* Seção "Skills" */}
       <motion.div
         ref={skillsRef}
         initial={{ opacity: 0, x: -100 }}
@@ -172,13 +274,27 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-custom-3 flex justify-center flex-col items-center text-center box"
       >
-        <h1 className="text-2xl font-bold text-custom-5">Skills</h1>
-        <p className="text-xl p-12 px-64">
+        <Typography
+          variant="title"
+          weight="bold"
+          align="center"
+          className="text-custom-5"
+        >
+          Skills
+        </Typography>
+        <Typography
+          variant="body"
+          weight="normal"
+          align="center"
+          className="p-12 px-64"
+        >
           I am proficient in a wide range of technologies including JavaScript,
-          TypeScript, Node.js, React, Express, MongoDB, and SQL.
-        </p>
+          React, Node.js, Express, MongoDB, and more. I am always looking to
+          expand my knowledge and tackle new challenges.
+        </Typography>
       </motion.div>
 
+      {/* Seção "Contact" */}
       <motion.div
         ref={contactRef}
         initial={{ opacity: 0, x: -100 }}
@@ -188,50 +304,24 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-custom-3 flex justify-center flex-col items-center text-center box"
       >
-        <h1 className="text-2xl font-bold text-custom-5">Contact</h1>
-        <p className="text-xl p-12 px-64">
-          Feel free to get in touch with me through the following platforms:
-          <ul>
-            <li>Email: example@example.com</li>
-            <li>
-              GitHub:{" "}
-              <a href="https://github.com/hermesgsc">
-                https://github.com/hermesgsc
-              </a>
-            </li>
-            <li>
-              LinkedIn:{" "}
-              <a href="https://www.linkedin.com/in/hermes-gabriel-78410b232/">
-                LinkedIn
-              </a>
-            </li>
-          </ul>
-        </p>
+        <Typography
+          variant="title"
+          weight="bold"
+          align="center"
+          className="text-custom-5"
+        >
+          Contact
+        </Typography>
+        <Typography
+          variant="body"
+          weight="normal"
+          align="center"
+          className="p-12 px-64"
+        >
+          Feel free to reach out to me via email or LinkedIn for any
+          opportunities, collaboration, or questions.
+        </Typography>
       </motion.div>
-
-      <footer className="bg-custom-grey text-center py-6 mt-20">
-        <div className="flex justify-center space-x-6">
-          <a
-            href="https://github.com/hermesgsc"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-custom-3 hover:text-custom-5 transition-colors duration-300"
-          >
-            <Icon icon="mdi:github" width="30" height="30" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/hermes-gabriel-78410b232/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-custom-3 hover:text-custom-5 transition-colors duration-300"
-          >
-            <Icon icon="mdi:linkedin" width="30" height="30" />
-          </a>
-        </div>
-        <p className="text-custom-3 mt-4">
-          &copy; {new Date().getFullYear()} Hermes Gabriel. All Rights Reserved.
-        </p>
-      </footer>
     </header>
   );
 };
