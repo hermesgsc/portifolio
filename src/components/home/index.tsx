@@ -135,7 +135,7 @@ const HomePage: React.FC = () => {
             align="center"
             className="leading-8 text-sm sm:text-base md:text-lg"
           >
-            I&apos;m 21 years old, born in{" "}
+            i&apos;m 21 years old, born in{" "}
             <strong className="cursor-default hover:text-green-500 transition-colors duration-300">
               Brazil
             </strong>
