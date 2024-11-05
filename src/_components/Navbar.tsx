@@ -117,11 +117,17 @@ const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-custom-grey w-full fixed top-0 left-0 p-4 transition-all duration-300 ${
+        className={`md:hidden bg-custom-grey w-full fixed top-0 left-0 p-4 transition-all duration-300 z-20 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <ol className="space-y-4 text-custom-3">
+        <div className="flex justify-between items-center">
+          <div className="text-xl text-white"></div>
+          <button onClick={toggleMenu} className="text-white text-3xl">
+            <Icon icon="mdi:close" width="32" height="32" />
+          </button>
+        </div>
+        <ol className="space-y-4 text-custom-3 mt-4">
           <li
             className="hover:text-custom-5 transition-colors duration-300 cursor-pointer"
             onClick={() => scrollToSection(aboutMeRef)}

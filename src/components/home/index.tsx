@@ -120,7 +120,7 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.5 }}
         className=" text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
       >
-        <div className="flex-1 p-12 order-1 md:order-2">
+        <div className="flex-1 p-12 order-1 md:order-2 pt-36">
           <Typography
             variant="title"
             weight="bold"
