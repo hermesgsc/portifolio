@@ -74,7 +74,7 @@ const HomePage: React.FC = () => {
       />
 
       {/* Introduction Section */}
-      <div className="flex items-center justify-center mt-48">
+      <div className="flex items-center justify-center h-screen -mt-16">
         <div className="p-12 text-center">
           <Typography
             variant="title"
@@ -120,7 +120,7 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.5 }}
         className=" text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
       >
-        <div className="flex-1 p-12 order-1 md:order-2 pt-36">
+        <div className="flex-1 p-12 order-1 md:order-2 ">
           <Typography
             variant="title"
             weight="bold"
