@@ -1,9 +1,10 @@
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
-export const darkMode = ["class"];
+export const darkMode = ["class"]; // Class-based dark mode
+
 export const content = [
-  "./src/**/*.{js,jsx,ts,tsx}", // Ajuste o caminho conforme a estrutura do seu projeto
+  "./src/**/*.{js,jsx,ts,tsx}", // Ensure this reflects your directory structure
   "app/**/*.{ts,tsx}",
   "components/**/*.{ts,tsx}",
 ];
@@ -13,10 +14,19 @@ export const theme = {
     center: true,
     padding: "2rem",
     screens: {
-      "2xl": "1400px",
+      "2xl": "1400px", // Custom screen size for larger displays
     },
   },
   extend: {
+    animation: {
+      "infinite-scroll": "infinite-scroll 40s linear infinite",
+    },
+    keyframes: {
+      "infinite-scroll": {
+        "0%": { transform: "translateX(0)" },
+        "100%": { transform: "translateX(-100%)" },
+      },
+    },
     colors: {
       "custom-1": "#032B33",
       "custom-2": "#0B4955",
@@ -59,15 +69,15 @@ export const theme = {
       },
     },
     backdropBlur: {
-      lg: "10px", // Customize o valor de blur
+      lg: "10px", // Custom backdrop blur value
     },
     borderRadius: {
-      lg: `var(--radius)`,
-      md: `calc(var(--radius) - 2px)`,
+      lg: "var(--radius)", // Use custom radius values
+      md: "calc(var(--radius) - 2px)",
       sm: "calc(var(--radius) - 4px)",
     },
     fontFamily: {
-      sans: ["var(--font-sans)", ...fontFamily.sans],
+      sans: ["var(--font-sans)", ...fontFamily.sans], // Custom sans font
     },
   },
 };
