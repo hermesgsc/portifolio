@@ -166,14 +166,6 @@ const HomePage: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
         >
-          <div className="flex-1 order-2 md:order-1 flex justify-center items-center mb-8 md:mb-0">
-            <img
-              src="https://media.licdn.com/dms/image/v2/D4D03AQHAiCeAMl_VLA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1695060086524?e=1736380800&v=beta&t=i9VFNajnymZQcxUD7QjQysg_Ryc97zyuNFP_L0fwVhg"
-              alt="Profile"
-              className="w-72 h-72 rounded-full"
-            />
-          </div>
-
           <div className="flex-1 p-12 order-1 md:order-2">
             <Typography
               variant="title"
@@ -186,7 +178,7 @@ const HomePage: React.FC = () => {
             <Typography
               variant="body"
               weight="normal"
-              align="left"
+              align="center"
               className="leading-8"
             >
               I&apos;m 21 years old, born in{" "}
