@@ -122,7 +122,7 @@ const HomePage: React.FC = () => {
           aboutMeVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
         } // Animação quando visível
         transition={{ duration: 0.5 }} // Duração da animação
-        className="text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
+        className="text-custom-3 h-screen flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
       >
         <div className="flex-1 p-3 order-1 md:order-2">
           <Typography
@@ -137,7 +137,7 @@ const HomePage: React.FC = () => {
             variant="body"
             weight="normal"
             align="center"
-            className="leading-10 text-sm sm:text-base md:text-lg px-16 sm:px-16 md:px-64 min-w-[180px]:px-3"
+            className=" text-sm sm:text-base md:text-lg px-16 sm:px-16 md:px-64 min-w-[180px]:px-3"
           >
             I&apos;m 21 years old, born in{" "}
             <strong className="cursor-default hover:text-green-500 transition-colors duration-300 ">
@@ -161,7 +161,7 @@ const HomePage: React.FC = () => {
           experienceVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
         }
         transition={{ duration: 0.5 }}
-        className="text-custom-3 flex justify-center flex-col items-center text-center box"
+        className="text-custom-3 flex justify-center flex-col items-center text-center box pt-36"
       >
         <Typography
           variant="title"
