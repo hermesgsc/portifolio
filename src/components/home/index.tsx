@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <header className="bg-custom-grey">
+    <section className="bg-custom-grey w-full">
       <Navbar
         scrollToSection={scrollToSection}
         aboutMeRef={aboutMeRef}
@@ -124,7 +124,7 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.5 }} // Duração da animação
         className="text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
       >
-        <div className="flex-1 p-12 order-1 md:order-2">
+        <div className="flex-1 p-3 order-1 md:order-2">
           <Typography
             variant="title"
             weight="bold"
@@ -137,24 +137,23 @@ const HomePage: React.FC = () => {
             variant="body"
             weight="normal"
             align="center"
-            className="leading-10 text-sm sm:text-base md:text-lg md: px-64 "
+            className="leading-10 text-sm sm:text-base md:text-lg px-16 sm:px-16 md:px-64 min-w-[180px]:px-3"
           >
-            I'm 21 years old, born in{" "}
+            I&apos;m 21 years old, born in{" "}
             <strong className="cursor-default hover:text-green-500 transition-colors duration-300 ">
               Brazil
             </strong>
-            . Currently, I'm pursuing a degree in Information Systems at Montes
-            Claros State University. I have a deep passion for web development,
-            starting in front-end, but I found my true calling in back-end
-            development. My interest in programming and development began when I
-            was a child. Throughout my life, I've always been passionate about
-            technology and games, which has significantly contributed to my
-            growth and knowledge in programming.
+            . Currently, I&apos;m pursuing a degree in Information Systems at
+            Montes Claros State University. I have a deep passion for web
+            development, starting in front-end, but I found my true calling in
+            back-end development. My interest in programming and development
+            began when I was a child. Throughout my life, I&apos;ve always been
+            passionate about technology and games, which has significantly
+            contributed to my growth and knowledge in programming.
           </Typography>
         </div>
       </motion.div>
 
-      {/* Section "Experience" */}
       <motion.div
         ref={experienceRef}
         initial={{ opacity: 0, x: -100 }}
@@ -270,7 +269,7 @@ const HomePage: React.FC = () => {
           opportunities, collaboration, or questions.
         </Typography>
       </motion.div>
-    </header>
+    </section>
   );
 };
 
