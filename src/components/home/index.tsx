@@ -109,8 +109,8 @@ const HomePage: React.FC = () => {
               />
             </div>
           </div>
-          <div onClick={() => scrollToSection(aboutMeRef)}>
-            <Button />
+          <div>
+            <Button onClick={() => scrollToSection(aboutMeRef)} />
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@ const HomePage: React.FC = () => {
           aboutMeVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
         } // Animação quando visível
         transition={{ duration: 0.5 }} // Duração da animação
-        className="text-custom-3 h-screen flex flex-col md:flex-row justify-center items-center text-center md:text-left box"
+        className="text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box md:h-screen "
       >
         <div className="flex-1 p-3 order-1 md:order-2">
           <Typography

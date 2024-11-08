@@ -2,26 +2,27 @@
 
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Icon } from "@iconify/react"; // Importa o componente Icon do Iconify
+import { Icon } from "@iconify/react";
+import Typography from "./Typography";
 
-// Tipagem dos props para o componente EncryptButton
 interface EncryptButtonProps {
-  targetText?: string; // Texto a ser exibido no botão (default: "View more")
-  cyclesPerLetter?: number; // Número de ciclos por letra para o efeito de scrambling (default: 2)
-  shuffleTime?: number; // Tempo entre os ciclos de scramble (default: 50ms)
-  chars?: string; // Conjunto de caracteres para a randomização (default: "!@#$%^&*():{};|,.<>/?")
+  targetText?: string;
+  cyclesPerLetter?: number;
+  shuffleTime?: number;
+  chars?: string;
+  onClick?: () => void;
 }
 
 const EncryptButton: React.FC<EncryptButtonProps> = ({
-  targetText = "View more", // Texto padrão "View more"
+  targetText = "Know me",
   cyclesPerLetter = 2,
   shuffleTime = 50,
   chars = "!@#$%^&*():{};|,.<>/?",
+  onClick,
 }) => {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [text, setText] = useState<string>(targetText);
 
-  // Função para embaralhar o texto
   const scramble = () => {
     let pos = 0;
 
@@ -41,14 +42,12 @@ const EncryptButton: React.FC<EncryptButtonProps> = ({
       setText(scrambled);
       pos++;
 
-      // Parar o efeito quando atingir o número total de ciclos
       if (pos >= targetText.length * cyclesPerLetter) {
         stopScramble();
       }
     }, shuffleTime);
   };
 
-  // Parar o efeito de scramble e voltar ao texto original
   const stopScramble = () => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -62,10 +61,11 @@ const EncryptButton: React.FC<EncryptButtonProps> = ({
       whileTap={{ scale: 0.975 }}
       onMouseEnter={scramble}
       onMouseLeave={stopScramble}
+      onClick={onClick} // Pass the onClick prop here
       className="group relative overflow-hidden rounded-lg border-[1px] border-neutral-500 bg-neutral-700 px-4 py-2 font-mono font-medium uppercase text-neutral-300 transition-colors hover:text-custom-5"
     >
       <div className="relative z-10 flex items-center gap-2">
-        <span>{text} </span>{" "}
+        <Typography>{text}</Typography>
         <Icon
           className="hover:text-custom-5"
           icon="line-md:chevron-small-down"
@@ -88,12 +88,14 @@ const EncryptButton: React.FC<EncryptButtonProps> = ({
   );
 };
 
-// Exemplo de como usar o EncryptButton
-const Button: React.FC = () => {
+interface ButtonProps {
+  onClick?: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ onClick }) => {
   return (
     <div className="grid min-h-[200px] place-content-center p-4">
-      {/* Usando o botão EncryptButton com valores padrão */}
-      <EncryptButton />
+      <EncryptButton onClick={onClick} />
     </div>
   );
 };
