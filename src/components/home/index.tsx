@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Typography from "_components/Typography"; // Assuming you have a Typography component
 import Navbar from "_components/Navbar"; // Assuming you have a Navbar component
 import Button from "_components/Button";
+import Card from "_components/Card";
 
 const HomePage: React.FC = () => {
   const aboutMeRef = useRef<HTMLDivElement>(null);
@@ -75,7 +76,7 @@ const HomePage: React.FC = () => {
       />
 
       {/* Introduction Section */}
-      <div className="flex items-center justify-center h-screen -mt-16">
+      <div className="flex items-center justify-center h-screen -mt-16 bg-gradient-to-t from-gray-800">
         <div className="p-12 text-center">
           <Typography
             variant="title"
@@ -114,46 +115,47 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <motion.div
-        ref={aboutMeRef}
-        initial={{ opacity: 0, x: -100 }} // Inicialmente invisível e fora de posição
-        animate={
-          aboutMeVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
-        } // Animação quando visível
-        transition={{ duration: 0.5 }} // Duração da animação
-        className="text-custom-3 flex flex-col md:flex-row justify-center items-center text-center md:text-left box md:h-screen "
-      >
-        <div className="flex-1 p-3 order-1 md:order-2">
-          <Typography
-            variant="title"
-            weight="bold"
-            align="center"
-            className="text-custom-5 mb-6 text-xl sm:text-2xl md:text-3xl"
-          >
-            About Me
-          </Typography>
-          <Typography
-            variant="body"
-            weight="normal"
-            align="center"
-            className=" text-sm sm:text-base md:text-lg px-16 sm:px-16 md:px-64 min-w-[180px]:px-3"
-          >
-            I&apos;m 21 years old, born in{" "}
-            <strong className="cursor-default hover:text-green-500 transition-colors duration-300 ">
-              Brazil
-            </strong>
-            . Currently, I&apos;m pursuing a degree in Information Systems at
-            Montes Claros State University. I have a deep passion for web
-            development, starting in front-end, but I found my true calling in
-            back-end development. My interest in programming and development
-            began when I was a child. Throughout my life, I&apos;ve always been
-            passionate about technology and games, which has significantly
-            contributed to my growth and knowledge in programming.
-          </Typography>
-        </div>
-      </motion.div>
-
+      <div className="bg-gray-800">
+        <motion.div
+          ref={aboutMeRef}
+          initial={{ opacity: 0, x: -100 }} // Inicialmente invisível e fora de posição
+          animate={
+            aboutMeVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
+          } // Animação quando visível
+          transition={{ duration: 0.5 }} // Duração da animação
+          className="flex items-center justify-center leading-10 pb-9"
+        >
+          <Card>
+            <Typography
+              className="text-custom-4 pb-4"
+              variant="subtitle"
+              weight="bold"
+              align="left"
+            >
+              About Me
+            </Typography>
+            <Typography
+              className="text-custom-textcolor "
+              variant="body"
+              weight="light"
+              align="left"
+            >
+              I&apos;m 21 years old, born in{" "}
+              <strong className="cursor-default hover:text-green-500 transition-colors duration-300 ">
+                Brazil
+              </strong>
+              . Currently, I&apos;m pursuing a degree in Information Systems at
+              Montes Claros State University. I have a deep passion for web
+              development, starting in front-end, but I found my true calling in
+              back-end development. My interest in programming and development
+              began when I was a child. Throughout my life, I&apos;ve always
+              been passionate about technology and games, which has
+              significantly contributed to my growth and knowledge in
+              programming.
+            </Typography>
+          </Card>
+        </motion.div>
+      </div>
       <motion.div
         ref={experienceRef}
         initial={{ opacity: 0, x: -100 }}
